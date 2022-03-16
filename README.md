@@ -18,4 +18,4 @@ Example:
     img005.tif  <- interpolated image between original images img002.tif and img003.tif
     img006.tif  <- original image img003.tif
     
-In this [manual]() you will find more cases of use and details about this tool.
+In this [manual]() you will find more cases of use and extra details about this tool.
