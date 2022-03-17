@@ -1,15 +1,21 @@
 #!/usr/bin/env python
-'''Linear interpolation using Optical Flow.
+'''Linear interpolation of images using estimation of the optical flow.
 '''
 
-import numpy as np
-import cv2
+# "isoflow.py" is part of "https://github.com/Z-interpolation/IsoFlow", authored by:
+# * JJ Fernández (CSIC).
+# * V. González-Ruiz (UAL).
+
+import logging
+import os
+LOGGING_FORMAT = "(%(levelname)s) %(module)s: %(message)s"
 if __debug__:
     import time
-import logging
-LOGGING_FORMAT = "(%(levelname)s) %(module)s: %(message)s"
-logging.basicConfig(format=LOGGING_FORMAT, level=logging.INFO)
-import os
+    logging.basicConfig(format=LOGGING_FORMAT, level=logging.INFO)
+else:
+    logging.basicConfig(format=LOGGING_FORMAT, level=logging.DEBUG)
+import numpy as np
+import cv2
 
 def read_image(filename:str) -> np.ndarray:
     image = cv2.imread(filename, cv2.IMREAD_UNCHANGED)
