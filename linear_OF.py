@@ -79,14 +79,14 @@ def linear_OF_interpolation(
         images:str,
         first_image:int,
         N_images:int,
-        I_step:int,
+        I_factor:int,
         levels:int,
         wside:int,
         iters:int) -> None:
     
-    for i in range(first_image, first_image + N_images//I_step):
-        prev_image_index = i*I_step
-        next_image_index = (i+1)*I_step
+    for i in range(first_image, first_image + N_images // I_factor):
+        prev_image_index = i * I_factor
+        next_image_index = (i+1) * I_factor
         prev_image_filename = \
             compose_filename(images, prev_image_index)
         logging.info(f"reading image \"{prev_image_filename}\"")
@@ -96,12 +96,12 @@ def linear_OF_interpolation(
         prev_image = read_image(prev_image_filename)
         next_image = read_image(next_image_filename)
         
-        for j in range(1, I_step):
-            interpolated_image_index = i*I_step + j
+        for j in range(1, I_factor):
+            interpolated_image_index = i * I_factor + j
             prev_image_contribution = \
-                (next_image_index - interpolated_image_index)/I_step
+                (next_image_index - interpolated_image_index) / I_factor
             next_image_contribution = \
-                (interpolated_image_index - prev_image_index)/I_step
+                (interpolated_image_index - prev_image_index) / I_factor
             
             forward_flow = np.zeros(
                 (next_image.shape[0], next_image.shape[1], 2),
@@ -142,10 +142,10 @@ def linear_OF_interpolation(
             logging.info("writting image \"{interpolated_image_index}\"")
             write_image(interpolation_image, output_file_name)
 
-def rename_images(images:str, N_images:int, I_step:int) -> None:
+def rename_images(images:str, N_images:int, I_factor:int) -> None:
     for i in range(N_images - 1, -1, -1):
         old_image_filename = compose_filename(images, i)
-        new_image_filename = compose_filename(images, i * I_step)
+        new_image_filename = compose_filename(images, i * I_factor)
         logging.info(f"renaming {old_image_filename} to {new_image_filename}")
         #os.rename(f"old_image_filename}",
         #          f"/tmp/{new_image_filename}")
@@ -174,16 +174,15 @@ parser.add_argument("-n", "--number_of_images", type=int_or_str,
 if __name__ == "__main__":
     parser.description = __doc__
     args = parser.parse_known_args()[0]
-    rename_images(args.images, args.number_of_images, args.interpolation_factor)
-    quit()
+    image = args.images
+    N_images = args.number_of_images
+    I_factor = args.interpolation_factor
+    rename_images(images, N_images, I_factor)
     linear_OF_interpolation(
-        #input_prefix = args.images.split('%')[0],
-        #output_prefix = args.images.split('%')[0],
-        #enumeration_digits = args.images.split('%')[1],
         images = args.images,
         first_image = 0,
-        N_images = args.number_of_images,
-        I_step = args.interpolation_factor,
+        N_images = N_images,
+        I_factor = args.interpolation_factor,
         levels = OF_LEVELS,
         wside = OF_WINDOW_SIDE,
         iters = OF_ITERS)
