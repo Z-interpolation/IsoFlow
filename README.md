@@ -12,10 +12,10 @@ Example:
     > ls *.tif
     img_000.tif  <- original image img_000.tif
     img_001.tif  <- interpolated image between images img_000.tif and img_002.tif
-    img_002.tif  <- original image img001.tif
+    img_002.tif  <- original image img_001.tif
     img_003.tif  <- interpolated image between images img_002.tif and img_004.tif
-    img_004.tif  <- original image img002.tif 
+    img_004.tif  <- original image img_002.tif 
     img_005.tif  <- interpolated image between images img_004.tif and img_006.tif
-    img_006.tif  <- original image img003.tif
+    img_006.tif  <- original image img_003.tif
 
 In this [manual]() you will find more cases of use and extra details about this tool.
