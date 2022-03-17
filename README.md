@@ -18,4 +18,4 @@ Example:
     img_005.tif  <- interpolated image between images img_004.tif and img_006.tif
     img_006.tif  <- original image img_003.tif
 
-In the [manual]() you will find more information.
+In the [manual](https://github.com/Z-interpolation/IsoFlow/blob/main/manual.ipynb) you will find more information.
