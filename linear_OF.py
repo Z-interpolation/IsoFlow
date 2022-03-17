@@ -9,6 +9,7 @@ if __debug__:
 import logging
 LOGGING_FORMAT = "(%(levelname)s) %(module)s: %(message)s"
 logging.basicConfig(format=LOGGING_FORMAT, level=logging.INFO)
+import os
 
 def read_image(filename:str) -> np.ndarray:
     image = cv2.imread(filename, cv2.IMREAD_UNCHANGED)
@@ -126,29 +127,28 @@ def linear_OF_interpolation(
                 wside = wside,
                 iters = iters)
             prev_prediction = \
-                make_prediction(reference_image = prev,
-                                flow = forward_flow*next_image_contribution)
+                make_prediction(reference_image = prev_image,
+                                flow = forward_flow * next_image_contribution)
             next_prediction = \
-                make_prediction(reference_image = next,
-                                flow = backward_flow*prev_image_contribution)
+                make_prediction(reference_image = next_image,
+                                flow = backward_flow * prev_image_contribution)
             interpolation_image = \
                 (prev_prediction * prev_image_contribution + \
                  next_prediction * next_image_contribution).astype(np.uint8)
             if __debug__:
                 time_1 = time.process_time()
-                logging.info(f"CPU time =", time_1 - time_0)
+                logging.info(f"CPU time = {time_1 - time_0} seconds")
             output_file_name = \
                 compose_filename(images, interpolated_image_index)
-            logging.info("writting image \"{interpolated_image_index}\"")
-            write_image(interpolation_image, output_file_name)
+            logging.info(f"writting image \"{output_file_name}\"")
+            write_image(output_file_name, interpolation_image)
 
 def rename_images(images:str, N_images:int, I_factor:int) -> None:
     for i in range(N_images - 1, -1, -1):
         old_image_filename = compose_filename(images, i)
         new_image_filename = compose_filename(images, i * I_factor)
-        logging.info(f"renaming {old_image_filename} to {new_image_filename}")
-        #os.rename(f"old_image_filename}",
-        #          f"/tmp/{new_image_filename}")
+        logging.info(f"renaming \"{old_image_filename}\" to \"{new_image_filename}\"")
+        os.rename(old_image_filename, new_image_filename)
 
 import argparse
 
@@ -174,15 +174,15 @@ parser.add_argument("-n", "--number_of_images", type=int_or_str,
 if __name__ == "__main__":
     parser.description = __doc__
     args = parser.parse_known_args()[0]
-    image = args.images
+    images = args.images
     N_images = args.number_of_images
     I_factor = args.interpolation_factor
     rename_images(images, N_images, I_factor)
     linear_OF_interpolation(
-        images = args.images,
+        images = images,
         first_image = 0,
         N_images = N_images,
-        I_factor = args.interpolation_factor,
+        I_factor = I_factor,
         levels = OF_LEVELS,
         wside = OF_WINDOW_SIDE,
         iters = OF_ITERS)
