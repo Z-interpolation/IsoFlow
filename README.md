@@ -4,18 +4,18 @@ Inputs a set of `N` images (all with the same resolution and depth) and outputs 
 Example:
 
     > ls *.tif
-    img000.tif
-    img001.tif
-    img002.tif
-    img003.tif
-    > python linear_OF.py --images img%3d.tif --interpolation_factor 2 --number_of_images 4
+    img_000.tif
+    img_001.tif
+    img_002.tif
+    img_003.tif
+    > python linear_OF.py --images img_%3d.tif --interpolation_factor 2 --number_of_images 4
     > ls *.tif
-    img000.tif  <- original image img000.tif
-    img001.tif  <- interpolated image between images img000.tif and img002.tif
-    img002.tif  <- original image img001.tif
-    img003.tif  <- interpolated image between images img002.tif and img004.tif
-    img004.tif  <- original image img002.tif 
-    img005.tif  <- interpolated image between images img004.tif and img006.tif
-    img006.tif  <- original image img003.tif
+    img_000.tif  <- original image img_000.tif
+    img_001.tif  <- interpolated image between images img_000.tif and img_002.tif
+    img_002.tif  <- original image img001.tif
+    img_003.tif  <- interpolated image between images img_002.tif and img_004.tif
+    img_004.tif  <- original image img002.tif 
+    img_005.tif  <- interpolated image between images img_004.tif and img_006.tif
+    img_006.tif  <- original image img003.tif
 
 In this [manual]() you will find more cases of use and extra details about this tool.
