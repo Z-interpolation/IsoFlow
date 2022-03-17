@@ -8,7 +8,7 @@ Example:
     img_001.tif
     img_002.tif
     img_003.tif
-    > python linear_OF.py --images img_%3d.tif --interpolation_factor 2 --number_of_images 4
+    > python isoflow.py --images img_%3d.tif --interpolation_factor 2 --number_of_images 4
     > ls *.tif
     img_000.tif  <- original image img_000.tif
     img_001.tif  <- interpolated image between images img_000.tif and img_002.tif
@@ -18,4 +18,4 @@ Example:
     img_005.tif  <- interpolated image between images img_004.tif and img_006.tif
     img_006.tif  <- original image img_003.tif
 
-In the [manual](https://github.com/Z-interpolation/IsoFlow/blob/main/manual.ipynb) you will find more information.
+In the [manual](https://github.com/Z-interpolation/IsoFlow/blob/main/manual/manual.ipynb) you will find more information.
