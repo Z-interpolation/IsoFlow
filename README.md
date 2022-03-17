@@ -8,7 +8,7 @@ Example:
     img001.tif
     img002.tif
     img003.tif
-    > python interpolate.py -i img%3d.tif -f 2 -N 4
+    > python linear_OF.py --images img%3d.tif --interpolation_factor 2 --number_of_images 4
     > ls *.tif
     img000.tif  <- original image img000.tif
     img001.tif  <- interpolated image between original images img000.tif and img001.tif
@@ -17,5 +17,5 @@ Example:
     img004.tif  <- original image img002.tif 
     img005.tif  <- interpolated image between original images img002.tif and img003.tif
     img006.tif  <- original image img003.tif
-    
+
 In this [manual]() you will find more cases of use and extra details about this tool.
