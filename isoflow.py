@@ -3,7 +3,7 @@
 '''
 
 # "isoflow.py" is part of "https://github.com/Z-interpolation/IsoFlow", authored by:
-# * JJ Fernández (CSIC).
+# * J.J. Fernández (CSIC).
 # * V. González-Ruiz (UAL).
 
 import logging
