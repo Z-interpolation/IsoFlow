@@ -91,7 +91,7 @@ def linear_OF_interpolation(
         wside:int,
         iters:int) -> None:
     
-    for i in range(first_image, first_image + N_images // I_factor):
+    for i in range(first_image, first_image + N_images - 1):
         prev_image_index = i * I_factor
         next_image_index = (i+1) * I_factor
         prev_image_filename = \
