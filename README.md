@@ -1,5 +1,11 @@
 # IsoFlow (Isotropic image interpolation using optical Flow)
-IsoFlow inputs a set of `N` images (all with the same resolution and depth) and outputs a set of `(f-1)(N-1)` images, where `f` (an integer power of 2 larger than 1) is the interpolation factor, generated using linear interpolation driven by the optical flow, as decribed in [*Optical Flow Driven Interpolation for Isotropic FIB-SEM Reconstructions*]().
+IsoFlow inputs a set of `N` images (all with the same resolution and depth) and outputs a set of `(f-1)(N-1)` images, where `f` (an integer power of 2 larger than 1) is the interpolation factor, generated using linear interpolation driven by the optical flow, as described in 
+
+> [*Optical Flow Driven Interpolation for Isotropic FIB-SEM Reconstructions.*](https://www.sciencedirect.com/science/article/pii/S0169260722002383)  
+> [V. Gonzalez-Ruiz, J.P. Garcia-Ortiz, M.R. Fernandez-Fernandez, J.J. Fernandez.](https://www.sciencedirect.com/science/article/pii/S0169260722002383)  
+> [**Comput. Methods Programs Biomed.** 221:106856, 2022.](https://www.sciencedirect.com/science/article/pii/S0169260722002383)  
+> doi: https://doi.org/10.1016/j.cmpb.2022.106856  
+
 
 Example:
 
