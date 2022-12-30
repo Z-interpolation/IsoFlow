@@ -6,6 +6,7 @@ IsoFlow inputs a set of `N` images (all with the same resolution and depth) and 
 > [**Comput. Methods Programs Biomed.** 221:106856, 2022.](https://www.sciencedirect.com/science/article/pii/S0169260722002383)  
 > doi: https://doi.org/10.1016/j.cmpb.2022.106856  
 
+Please, cite this article if you use this software in your research.
 
 Example:
 
